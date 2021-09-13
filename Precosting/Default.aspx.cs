@@ -13,7 +13,10 @@ namespace Precosting
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                
+            }
         }
 
 
@@ -55,6 +58,8 @@ namespace Precosting
         }
 
 
+
+        // view table
         void ViewList()
         {
             SqlCommand comm = new SqlCommand("exec PrecostingList_SP", conn);
@@ -63,6 +68,8 @@ namespace Precosting
             sd.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
+
+            
         }
 
 
@@ -80,5 +87,37 @@ namespace Precosting
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }
+
+
+        protected void TextBox21_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        // delete button
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            int PO = int.Parse(TextBox1.Text);
+            int LC = int.Parse(TextBox2.Text);
+
+            conn.Open();
+            SqlCommand comm = new SqlCommand("exec PrecostingDelete_SP '" + PO + "', '" + LC + "'", conn);
+            comm.ExecuteNonQuery();
+            conn.Close();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully Deleted');", true);
+
+            
+            ViewList();
+        }
+
+
+        // show table button
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            ViewList();
+        }
+
+        
     }
 }
