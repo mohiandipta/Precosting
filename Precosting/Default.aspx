@@ -289,7 +289,7 @@
                 <asp:Label ID="Label22" runat="server" Font-Size="Large" Text="Total BDT"></asp:Label>
             </td>
             <td>
-                <output id="result"></output>
+                <output id="result" class="output"></output>
             </td>
         </tr>
         <tr>
@@ -375,7 +375,7 @@
                     totalsum += parseFloat(inputVal);
                 }
             });
-            $('#result').text(totalsum);
+            $('#result').text(totalsum + " " + "BDT");
         });
     </script>
     

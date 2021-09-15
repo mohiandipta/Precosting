@@ -4,4 +4,19 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="LCPreCosting.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LCPreCosting.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LCPreCosting.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LCPreCosting.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -59,7 +59,6 @@ namespace Precosting
         }
 
 
-
         // view table
         void ViewList()
         {
@@ -78,6 +77,7 @@ namespace Precosting
             int LC = int.Parse(TextBox2.Text);
 
             conn.Open();
+
             SqlCommand comm = new SqlCommand("exec PrecostingSearch_SP '" + PO + "', '" + LC + "'", conn);
 
             SqlDataAdapter sd = new SqlDataAdapter(comm);
@@ -106,7 +106,6 @@ namespace Precosting
                 TextBox17.Text = sdr["vatOnOtherBankCharges"].ToString();
                 TextBox18.Text = sdr["legalCompliance"].ToString();
                 TextBox19.Text = sdr["totalAdjustment"].ToString();
-
 
             }
             conn.Close();
