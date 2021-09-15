@@ -13,9 +13,10 @@ namespace Precosting
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
-                
+               
             }
         }
 
@@ -68,10 +69,7 @@ namespace Precosting
             sd.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
-
-            
         }
-
 
         // search button
         protected void Button2_Click(object sender, EventArgs e)
@@ -81,17 +79,37 @@ namespace Precosting
 
             conn.Open();
             SqlCommand comm = new SqlCommand("exec PrecostingSearch_SP '" + PO + "', '" + LC + "'", conn);
+
             SqlDataAdapter sd = new SqlDataAdapter(comm);
             DataTable dt = new DataTable();
             sd.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-        }
+            //GridView1.DataSource = dt;
+            //GridView1.DataBind();
+
+            using (SqlDataReader sdr = comm.ExecuteReader()) 
+            {
+                sdr.Read();
+                TextBox3.Text = sdr["lcOpenCommission"].ToString();
+                TextBox4.Text = sdr["vatOnOpeningCommisision"].ToString();
+                TextBox5.Text = sdr["swiftCharges"].ToString();
+                TextBox6.Text = sdr["vatOnSwift"].ToString();
+                TextBox7.Text = sdr["stationaryCharges"].ToString();
+                TextBox8.Text = sdr["vatOnStationary"].ToString();
+                TextBox9.Text = sdr["govtStamp"].ToString();
+                TextBox10.Text = sdr["confirmationBankCharges"].ToString();
+                TextBox11.Text = sdr["vatOnConfirmationCharges"].ToString();
+                TextBox12.Text = sdr["creditReportCharges"].ToString();
+                TextBox13.Text = sdr["vatOnCreditReportCharges"].ToString();
+                TextBox14.Text = sdr["lcCancelallationCharges"].ToString();
+                TextBox15.Text = sdr["vatOnCancellationCharges"].ToString();
+                TextBox16.Text = sdr["otherBankCharges"].ToString();
+                TextBox17.Text = sdr["vatOnOtherBankCharges"].ToString();
+                TextBox18.Text = sdr["legalCompliance"].ToString();
+                TextBox19.Text = sdr["totalAdjustment"].ToString();
 
 
-        protected void TextBox21_TextChanged(object sender, EventArgs e)
-        {
-            
+            }
+            conn.Close();
         }
 
 

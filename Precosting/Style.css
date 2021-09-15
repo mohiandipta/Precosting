@@ -15,15 +15,20 @@
     font-size: 15px;
     font-weight: 700;
     width: 90px;
-    padding: 10px;
+    padding: 8px;
     border-radius: 10px;
     border: none;
     background-color: #2F5D8C;
     color: white;
-    transition: 350ms ease;
+    transition: 400ms ease;
 }
 
     .button:hover {
         background-color: #6495ed;
         box-shadow: 1px 2px 7px rgb(34 34 34 / 0.42);
     }
+
+.from-control{
+    border-radius:5px;
+    border-color:darkgrey;
+}
