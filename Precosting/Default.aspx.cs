@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Build.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace Precosting
 {
@@ -13,10 +15,11 @@ namespace Precosting
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
             if (!IsPostBack)
             {
-               
+                ModelState.Clear();
             }
         }
 
@@ -53,10 +56,30 @@ namespace Precosting
             SqlCommand comm = new SqlCommand("exec PrecostingSetup_SP '" + PO + "', '" + LC + "', '" + unit + "', '" + lcOpenCommission + "', '" + vatOnOpeningCommisision + "', '" + swiftCharges + "', '" + vatOnSwift + "', '" + stationaryCharges + "', '" + vatOnStationary + "', '" + govtStamp + "', '" + confirmationBankCharges + "', '" + vatOnConfirmationCharges + "', '" + creditReportCharges + "', '" + vatOnCreditReportCharges + "', '" + lcCancelallationCharges + "', '" + vatOnCancellationCharges + "', '" + otherBankCharges + "', '" + vatOnOtherBankCharges + "', '" + legalCompliance + "', '" + totalAdjustment + "'", conn);
             comm.ExecuteNonQuery();
             conn.Close();
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully Submited');", true);
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+            TextBox6.Text = "";
+            TextBox7.Text = "";
+            TextBox8.Text = "";
+            TextBox9.Text = "";
+            TextBox10.Text = "";
+            TextBox11.Text = "";
+            TextBox12.Text = "";
+            TextBox13.Text = "";
+            TextBox14.Text = "";
+            TextBox15.Text = "";
+            TextBox16.Text = "";
+            TextBox17.Text = "";
+            TextBox18.Text = "";
+            TextBox19.Text = "";
 
-            ViewList();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "script", "alert('Successfully Submited');", true);
+            //ViewList();
         }
+
 
 
         // view table
@@ -134,7 +157,5 @@ namespace Precosting
         {
             ViewList();
         }
-
-        
     }
-}
+ }

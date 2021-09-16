@@ -92,8 +92,8 @@
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td style="height: 20px"></td>
+            <td style="height: 20px"></td>
         </tr>
         <tr>
             <td style="height: 32px">
